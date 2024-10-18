@@ -26,3 +26,30 @@ const createForm = (parentElement) => {
         }
     }
 }
+
+const salva = () => {
+    render();
+  };
+  
+  const carica = () => {
+    render();
+  };
+  
+  const display = (parentElement, data) => {
+    let html =
+      '<table><tr><th>Data</th><th>Singola</th><th>Doppia</th><th>Suite</th></tr>';
+    data.forEach((e) => {
+      html += `<tr><td>${e.Data}</td><td>${e.Singola}</td><td>${e.Doppia}</td><td>${e.Suite}</td></tr>`;
+    });
+    html += '</table>';
+    parentElement.innerHTML = html;
+  };
+  
+  function render() {
+    const dataContainer = document.getElementById('data-container');
+    display(dataContainer, lista);
+  }
+  
+  const formContainer = document.getElementById('form-container');
+  const form = cForm(formContainer);
+  form.render();
