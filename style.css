@@ -91,3 +91,7 @@ button {
     overflow: hidden;
     position: relative;
 }
+
+td {
+    text-align: center;
+}
