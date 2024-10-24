@@ -4,7 +4,7 @@ const defa = { Singola: 10, Doppia: 5, Suite: 3 };
 let diz = {};
 
 //Carica e salva
-function carica() {
+function carica() { 
     return fetch('https://ws.cipiaceinfo.it/cache/get', {
             headers: {
                 'Content-Type': 'application/json',
@@ -48,12 +48,12 @@ carica().then(() => {
         console.log("Diz vuoto");
         delete diz.message; // cancella le due chiavi inutili 
         delete diz.key;
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 30; i++) { //stampa i 30 giorni seguenti usanda la libreria date
             let date = new Date();
             date.setDate(date.getDate() + i);
             let date_string = date.toISOString().split('T')[0];
             console.log(date_string);
-            diz[date_string] = defa; // Aggiungi la disponibilità predefinita
+            diz[date_string] = defa; // aggiunge la disponibilità predefinita
         }
     } else {
         console.log("Pieno");
@@ -67,7 +67,7 @@ carica().then(() => {
 
 
 //console.log(diz);
-
+//componente form
 const cForm = (parentElement) => {
     const data = ['Data', 'Singola', 'Doppia', 'Suite'];
 
@@ -89,7 +89,7 @@ const cForm = (parentElement) => {
                 const singola = parseInt(document.getElementById('Singola').value);
                 const doppia = parseInt(document.getElementById('Doppia').value);
                 const suite = parseInt(document.getElementById('Suite').value);
-
+                //controlli sulle quantità delle camere
                 if (data && !isNaN(singola) && !isNaN(doppia) && !isNaN(suite)) {
                     if (!diz[data]) {
                         diz[data] = {
@@ -122,7 +122,7 @@ const cForm = (parentElement) => {
         },
     };
 };
-
+//componente tabella
 const display = (parentElement, data) => {
     let html = '<table><tr><th>DATA</th><th>SINGOLA</th><th>DOPPIA</th><th>SUITE</th></tr>';
     Object.keys(data).forEach((date) => {
